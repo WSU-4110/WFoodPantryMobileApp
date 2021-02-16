@@ -1,2 +1,0 @@
-include ':app'
-rootProject.name = "CSC 4111 Project"
