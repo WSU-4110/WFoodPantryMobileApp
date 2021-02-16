@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CSC 4111 Project 3</string>
+    <string name="about">About</string>
+    <string name="order">Order</string>
+    <string name="order_history">Order History</string>
+    <string name="log_off">Log Off</string>
+</resources>
