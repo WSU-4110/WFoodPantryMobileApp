@@ -46,4 +46,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Password"
         app:layout_constraintVertical_bias="0.176" />
+
+    <Button
+        android:id="@+id/loginswap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Swap to staff login"
+        android:textColor="#000000"
+        app:backgroundTint="#FBC663"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:layout_constraintVertical_bias="0.702" />
 </androidx.constraintlayout.widget.ConstraintLayout>
