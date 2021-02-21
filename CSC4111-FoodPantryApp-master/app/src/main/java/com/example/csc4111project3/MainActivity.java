@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText AccessID;
     private EditText Password;
     private Button Login;
+    private Button SwapLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +24,19 @@ public class MainActivity extends AppCompatActivity {
         AccessID = (EditText) findViewById(R.id.AccessID);
         Password = (EditText) findViewById(R.id.Password);
         Login = (Button) findViewById(R.id.login);
+        SwapLogin = (Button) findViewById(R.id.loginswap);
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MenuPage.class);
+                startActivity(intent);
+            }
+        });
+        SwapLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, StaffLoginPage.class);
                 startActivity(intent);
             }
         });

@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CSC4111Project3">
         <activity android:name=".MenuPage"></activity>
+        <activity android:name=".StaffMenuPage"></activity>
+        <activity android:name=".StaffLoginPage"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
