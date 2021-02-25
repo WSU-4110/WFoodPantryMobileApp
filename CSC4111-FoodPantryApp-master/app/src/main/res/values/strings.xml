@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CSC 4111 Project 3</string>
+    <string name="app_name">The W Food Pantry</string>
     <string name="about">About</string>
     <string name="order">Order</string>
     <string name="order_history">Order History</string>
@@ -8,4 +8,6 @@
     <string name="password">Password</string>
     <string name="staff_access_id">Access ID</string>
     <string name="staff_password">staffPassword</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
