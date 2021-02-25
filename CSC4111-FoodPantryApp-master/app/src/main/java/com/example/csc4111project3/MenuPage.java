@@ -13,7 +13,6 @@ import android.widget.Button;
 public class MenuPage extends AppCompatActivity {
 
     private DrawerLayout drawer;
-    private Button LogOff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
