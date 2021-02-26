@@ -7,14 +7,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 public class MenuPage extends AppCompatActivity {
 
-    private DrawerLayout drawer;
-    private Button LogOff;
 
+    private DrawerLayout drawer;
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
