@@ -30,16 +30,21 @@ public class MenuPage extends AppCompatActivity implements NavigationView.OnNavi
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-
         drawer = findViewById(R.id.menu_page_drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
 
+        if(savedInstanceState == null){
+            // sets the about page to be the first page to appear upon signing in
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new AboutPage()).commit();
+            navigationView.setCheckedItem(R.id.nav_about);
+        }
 
         //this code will handle clicking on the items in the navMenu
 
@@ -54,20 +59,32 @@ public class MenuPage extends AppCompatActivity implements NavigationView.OnNavi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        int id = item.getItemId();
+        /*int id = item.getItemId();
 
         if (id == R.id.nav_contact) {
             Intent intent = new Intent(MenuPage.this, ContactPage.class);
             startActivity(intent);
             return true;
-
-        } else if (id == R.id.nav_about) {
-            return true;
-        } else if (id == R.id.nav_check_orders) {
+        }
+        else if (id == R.id.nav_about) {
             return true;
         }
-            return false;
+        else if (id == R.id.nav_check_orders) {
+            return true;
+        }
 
+        return false;*/
+        switch (item.getItemId()){
+            case R.id.nav_about: // if "about" is clicked
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new AboutPage()).commit();
+                break;
+            case R.id.nav_contact: // if "contact" is clicked
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ContactPage()).commit();
+        }
+
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }//end of MenuPage Class
