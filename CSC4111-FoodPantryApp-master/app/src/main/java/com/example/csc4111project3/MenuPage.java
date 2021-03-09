@@ -74,6 +74,7 @@ public class MenuPage extends AppCompatActivity implements NavigationView.OnNavi
         }
 
         return false;*/
+
         switch (item.getItemId()){
             case R.id.nav_about: // if "about" is clicked
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -83,9 +84,15 @@ public class MenuPage extends AppCompatActivity implements NavigationView.OnNavi
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ContactPage()).commit();
                 break;
+            case R.id.nav_order: // if "order" is clicked
+                Intent i = new Intent(this,FormPIProcessing.class); //creates a new intent to send the user to the order form page "activity_info_form.xml"
+                this.startActivity(i); //starts the activity using the intent
+                break;
             case R.id.nav_log_off:
                 finish();
                 break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
         drawer.closeDrawer(GravityCompat.START);
