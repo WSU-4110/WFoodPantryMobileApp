@@ -1,21 +1,38 @@
 package com.example.csc4111project3;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import java.lang.*;
 
+public class StaffMessageUser extends AppCompatActivity{
+    //variables
+    private EditText Recipient;
+    private EditText MessageSubject;
+    private EditText MessageSend;
+    private Button SendButton;
 
-
-
-public class StaffMessageUser extends Fragment {
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_staffmessage_user, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_staffmessage_user);
+
+        //declare variables
+        Recipient = (EditText) findViewById(R.id.Recipient);
+        MessageSubject = (EditText) findViewById(R.id.MessageSubject);
+        MessageSend = (EditText) findViewById(R.id.MessageSend);
+        SendButton = (Button) findViewById(R.id.SendButton);
+
+        SendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); //fill later
+            }
+        });
     }
 }
