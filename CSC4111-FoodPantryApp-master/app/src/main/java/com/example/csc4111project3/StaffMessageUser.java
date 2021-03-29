@@ -16,10 +16,13 @@ public class StaffMessageUser extends AppCompatActivity{
     private EditText MessageSubject;
     private EditText MessageSend;
     private Button SendButton;
+    private StaffMessageUser instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_staffmessage_user);
 
         //declare variables
@@ -34,5 +37,16 @@ public class StaffMessageUser extends AppCompatActivity{
                 finish(); //fill later
             }
         });
+
+    }
+
+    private StaffMessageUser(){
+        instance = null;
+    }
+    public StaffMessageUser getInstance(){
+        if (instance == null){
+            instance = new StaffMessageUser();
+        }
+        return instance;
     }
 }
