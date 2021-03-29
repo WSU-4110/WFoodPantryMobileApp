@@ -16,7 +16,7 @@ public class StaffMessageUser extends AppCompatActivity{
     private EditText MessageSubject;
     private EditText MessageSend;
     private Button SendButton;
-    private StaffMessageUser instance;
+    private StaffMessageUser instances;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +41,12 @@ public class StaffMessageUser extends AppCompatActivity{
     }
 
     private StaffMessageUser(){
-        instance = null;
+        instances = null;
     }
-    public StaffMessageUser getInstance(){
-        if (instance == null){
-            instance = new StaffMessageUser();
+    public StaffMessageUser getInstanceStatus(){
+        if (instances == null){
+            instances = new StaffMessageUser();
         }
-        return instance;
+        return instances;
     }
 }
