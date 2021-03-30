@@ -12,9 +12,24 @@ import android.view.ViewGroup;
 
 public class ContactPage extends Fragment {
 
+    private static ContactPage contactpage;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_contact_page, container, false);
     }
+
+    private ContactPage() {
+        this.contactpage = null;
+    }
+
+    public ContactPage getContactPage(){
+        if (contactpage == null)
+            contactpage = new ContactPage();
+
+        return contactpage;
+    }
+
+
 }
