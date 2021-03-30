@@ -20,25 +20,28 @@ interface MenuSpinners{
 }
 
 class Carbs{
+    private static String[] carbohydrates;
     public static String[] createMenu(){
         //would need code to link specifically to menu availability for said items
-        String[] carbohydrates = {"Bread", "Black Beans", "Rice"};
+        carbohydrates = new String[]{"Bread", "Black Beans", "Rice"};
         return carbohydrates;
     }
 }
 
 class Vegetables{
+    private static String[] vegetables;
     public static String[] createMenu(){
         //would need code to link specifically to menu availability for said items
-        String[] vegetables = {"Green Beans", "Carrots", "Corn"};
+        vegetables = new String[]{"Green Beans", "Carrots", "Corn"};
         return vegetables;
     }
 }
 
 class Fruits{
+    private static String[] fruits;
     public static String[] createMenu(){
         //would need code to link specifically to menu availability for said items
-        String[] fruits = {"Pineapple", "Apple", "Orange"};
+        fruits = new String[]{"Pineapple", "Apple", "Orange"};
         return fruits ;
     }
 }
@@ -51,10 +54,16 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
     private Spinner spinner2;
     private Spinner spinner3;
     private Button submit;
-    private static final String[] carbohydrates = Carbs.createMenu();
-    private static final String[] vegetables = Vegetables.createMenu();
-    private static final String[] fruits = Fruits.createMenu();
+    private static String[] carbohydrates = Carbs.createMenu();
+    private static String[] vegetables = Vegetables.createMenu();
+    private static String[] fruits = Fruits.createMenu();
 
+
+    public static void createMenu(){
+        carbohydrates = Carbs.createMenu();
+        vegetables = Vegetables.createMenu();
+        fruits = Fruits.createMenu();
+    }
     //-------------------------------------------------------------
     //onCreate Override to establish the code upon entering the page
     //-------------------------------------------------------------
