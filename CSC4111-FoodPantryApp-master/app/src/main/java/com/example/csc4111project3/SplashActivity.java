@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity{
     Handler handler;
+    SplashActivity i;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,5 +27,14 @@ public class SplashActivity extends AppCompatActivity{
 
     }
 
+    private SplashActivity() {
+        this.i = null;
+    }
 
+    public SplashActivity getSplashActivity(){
+        if (i == null)
+            i = new SplashActivity();
+
+        return i;
+    }
 }
