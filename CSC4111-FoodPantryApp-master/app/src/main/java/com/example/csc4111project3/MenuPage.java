@@ -88,6 +88,10 @@ public class MenuPage extends AppCompatActivity implements NavigationView.OnNavi
                 Intent i = new Intent(this,FormPIProcessing.class); //creates a new intent to send the user to the order form page "activity_info_form.xml"
                 this.startActivity(i); //starts the activity using the intent
                 break;
+            case R.id.nav_message_staff: // if "message staff" is clicked
+                Intent j = new Intent(this,MessageStaff.class);
+                this.startActivity(j); //starts the activity using the intent
+                break;
             case R.id.nav_log_off:
                 finish();
                 break;
