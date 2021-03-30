@@ -15,8 +15,34 @@ import android.widget.Spinner;
 
 import java.lang.*;
 
-public class FormOIProcessing extends AppCompatActivity implements AdapterView.OnItemSelectedListener{ //This is the class that will be handling the food selection portion of the user submission form
+interface MenuSpinners{
+    public String[] createMenu();
+}
 
+class Carbs{
+    public static String[] createMenu(){
+        //would need code to link specifically to menu availability for said items
+        String[] carbohydrates = {"Bread", "Black Beans", "Rice"};
+        return carbohydrates;
+    }
+}
+
+class Vegetables{
+    public static String[] createMenu(){
+        //would need code to link specifically to menu availability for said items
+        String[] vegetables = {"Green Beans", "Carrots", "Corn"};
+        return vegetables;
+    }
+}
+
+class Fruits{
+    public static String[] createMenu(){
+        //would need code to link specifically to menu availability for said items
+        String[] fruits = {"Pineapple", "Apple", "Orange"};
+        return fruits ;
+    }
+}
+public class FormOIProcessing extends AppCompatActivity implements AdapterView.OnItemSelectedListener{ //This is the class that will be handling the food selection portion of the user submission form
     //---------
     //VARIABLES
     //---------
@@ -25,9 +51,9 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
     private Spinner spinner2;
     private Spinner spinner3;
     private Button submit;
-    private static final String[] carbohydrates = {"Bread", "Black Beans", "Rice"};
-    private static final String[] vegetables = {"Green Beans", "Carrots", "Corn"};
-    private static final String[] fruits = {"Pineapple", "Apple", "Orange"};
+    private static final String[] carbohydrates = Carbs.createMenu();
+    private static final String[] vegetables = Vegetables.createMenu();
+    private static final String[] fruits = Fruits.createMenu();
 
     //-------------------------------------------------------------
     //onCreate Override to establish the code upon entering the page
