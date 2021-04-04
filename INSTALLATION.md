@@ -15,7 +15,7 @@ under the tools tab <br/>
 ![image](https://user-images.githubusercontent.com/12967854/113517474-22470700-954e-11eb-86b7-eb0da4b80216.png)
 
 With the emulator established the app may now be run via Android Studio by <br />
-clicking on the run app button shown below.
+clicking on the run app button shown below. <br />
 ![image](https://user-images.githubusercontent.com/12967854/113517590-d5176500-954e-11eb-83de-c59f3386d720.png)
 
 
