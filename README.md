@@ -27,7 +27,7 @@ To set up the emulator within Android Studio. Select the AVD manager <br />
 under the tools tab <br/>
 ![image](https://user-images.githubusercontent.com/12967854/113517423-df852f00-954d-11eb-945a-00fe62faddaa.png)
 
-<br /> Select create virtual device and select the emulator shown <br / >
+<br /> Select create virtual device and select the emulator shown <br />
 
 ![image](https://user-images.githubusercontent.com/12967854/113517474-22470700-954e-11eb-86b7-eb0da4b80216.png)
 
