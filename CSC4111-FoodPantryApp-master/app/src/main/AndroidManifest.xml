@@ -25,6 +25,7 @@
         <activity android:name=".StaffLoginPage" />
         <activity android:name=".FormPIProcessing" />
         <activity android:name=".FormOIProcessing" />
+        <activity android:name=".FoodMenu"/>
     </application>
 
 </manifest>
