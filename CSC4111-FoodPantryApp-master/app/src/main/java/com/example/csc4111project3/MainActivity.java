@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button SwapLogin;
     private FirebaseAuth mAuth; //shared firebase object
     private TextView forgotpassword;
+    private Button Signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Login = (Button) findViewById(R.id.login);
         SwapLogin = (Button) findViewById(R.id.loginswap);
         forgotpassword = (TextView) findViewById(R.id.forgotpassword);
+        Signup = (Button) findViewById(R.id.signup);
 
 
         Login.setOnClickListener(new View.OnClickListener() {
