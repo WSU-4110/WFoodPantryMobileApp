@@ -85,7 +85,7 @@ public class MenuPage extends AppCompatActivity implements NavigationView.OnNavi
                         new ContactPage()).commit();
                 break;
             case R.id.nav_order: // if "order" is clicked
-                Intent i = new Intent(this,FormPIProcessing.class); //creates a new intent to send the user to the order form page "activity_info_form.xml"
+                Intent i = new Intent(this,FormOIProcessing.class); //creates a new intent to send the user to the order form page "activity_info_form.xml"
                 this.startActivity(i); //starts the activity using the intent
                 break;
             case R.id.nav_log_off:
