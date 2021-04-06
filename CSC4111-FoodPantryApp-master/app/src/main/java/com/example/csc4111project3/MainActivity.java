@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Signup = (Button) findViewById(R.id.signup);
 
 
+        //logs user in
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,10 +47,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //swaps login to staff
         SwapLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, StaffLoginPage.class);
+                startActivity(intent);
+            }
+        });
+
+        //takes user to signup page
+        Signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FormPIProcessing.class);
                 startActivity(intent);
             }
         });
