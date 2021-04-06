@@ -64,11 +64,11 @@
         app:layout_constraintVertical_bias="0.055" />
 
     <Button
-        android:id="@+id/toForm"
+        android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="136dp"
-        android:text="Fill Out Your Order"
+        android:text="Submit"
         android:textColor="#000000"
         app:backgroundTint="#FBC663"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="63dp"
         android:gravity="center"
-        android:text="Welcome to The W Pantry Order Placement Form!"
+        android:text="W Pantry SignUp Page"
         android:textSize="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
         android:gravity="center"
-        android:text="For the first part of this form, please fill out your contact information below so the W Pantry may follow up with you on your order:"
+        android:text="Please fill out the information below:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 

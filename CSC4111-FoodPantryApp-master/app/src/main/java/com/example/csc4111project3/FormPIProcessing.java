@@ -27,20 +27,20 @@ import java.lang.*;
             EditText LastName;
             EditText Phone;
             EditText Email;
-            Button FormLink;
+            Button Submit;
 
             //Links the aforementioned objects to their respective items within activity_info_form.xml
             FirstName = findViewById(R.id.FirstName);
             LastName = findViewById(R.id.LastName);
             Phone = findViewById(R.id.Phone);
             Email = findViewById(R.id.Email);
-            FormLink = findViewById(R.id.toForm);
+            Submit = findViewById(R.id.submit);
 
             //Sets a listener override for the submit button, telling the button press where to go
-            FormLink.setOnClickListener(new View.OnClickListener() {
+            Submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(FormPIProcessing.this, FormOIProcessing.class); //Creates an Intent object to send the user to the next order form page via a new Activity
+                    Intent intent = new Intent(FormPIProcessing.this, MainActivity.class);
                     startActivity(intent); //Begins the activity using the intent created
                 }
             });
