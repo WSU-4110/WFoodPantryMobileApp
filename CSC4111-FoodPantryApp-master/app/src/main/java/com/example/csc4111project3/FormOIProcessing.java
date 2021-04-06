@@ -2,15 +2,13 @@ package com.example.csc4111project3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.lang.*;
@@ -25,6 +23,7 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
     private Spinner spinner2;
     private Spinner spinner3;
     private Button submit;
+    private Button cancel;
     private static final String[] carbohydrates = {"Bread", "Black Beans", "Rice"};
     private static final String[] vegetables = {"Green Beans", "Carrots", "Corn"};
     private static final String[] fruits = {"Pineapple", "Apple", "Orange"};
@@ -37,6 +36,7 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
         super.onCreate(savedInstanceState); //captures the instance of the application
         setContentView(R.layout.activity_order_form); //sets the content view to the order form
         submit = (Button) findViewById(R.id.submitButton);
+        cancel = (Button) findViewById(R.id.cancelButton);
 
         spinner1 = (Spinner) findViewById(R.id.spinner1); //ties spinner to carbohydrate spinner within activity_order_form.xml
         spinner2 = (Spinner) findViewById(R.id.spinner2); //ties spinner to vegetable spinner within activity_order_form.xml
@@ -75,6 +75,34 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
             }
         });
 
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(FormOIProcessing.this);
+                builder1.setMessage("Are you sure you would like to cancel? The info placed for the order will not be saved, and you will be returned to the home page!");
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                finish();
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
+        });
     }
 
     //-----------------------------------------------------------------------------------------------------------------------------------

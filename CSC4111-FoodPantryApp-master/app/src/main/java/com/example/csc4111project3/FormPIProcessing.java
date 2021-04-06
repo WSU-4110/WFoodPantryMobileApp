@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.lang.*;
-
+    ///// THIS PAGE IS TO BE REWORKED INTO A SIGN UP PAGE FOR NEW USERS, AND HAS BEEN UNHOOKED CURRENTLY FROM MENU FUNCTIONS /////
     public class FormPIProcessing extends AppCompatActivity { //This is the class that will be handling the contact information portion of the user submission form
 
         @Override
