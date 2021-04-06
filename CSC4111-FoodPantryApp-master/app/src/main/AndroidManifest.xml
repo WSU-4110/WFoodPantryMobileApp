@@ -19,10 +19,13 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".MenuPage" />
+        <activity android:name=".MessageStaff" />
         <activity android:name=".StaffMenuPage" />
+        <activity android:name=".StaffMessageUser" />
         <activity android:name=".StaffLoginPage" />
         <activity android:name=".FormPIProcessing" />
         <activity android:name=".FormOIProcessing" />
+        <activity android:name=".FoodMenu"/>
     </application>
 
 </manifest>

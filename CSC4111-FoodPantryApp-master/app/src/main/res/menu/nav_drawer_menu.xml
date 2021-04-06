@@ -16,9 +16,17 @@
             android:icon="@drawable/ic_about"
             android:title="About" />
         <item
+            android:id="@+id/nav_browse_food_menu"
+            android:icon="@drawable/ic_browse_food"
+            android:title="Browse Menu" />
+        <item
             android:id="@+id/nav_contact"
             android:icon="@drawable/ic_contact"
             android:title="Contact" />
+        <item
+            android:id="@+id/nav_message_staff"
+            android:icon="@drawable/ic_push_update"
+            android:title="Message Staff" />
         <item
             android:id="@+id/nav_log_off"
             android:icon="@drawable/ic_log_off"

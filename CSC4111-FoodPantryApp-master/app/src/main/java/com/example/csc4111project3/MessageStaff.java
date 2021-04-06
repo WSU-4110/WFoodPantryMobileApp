@@ -10,10 +10,9 @@ import android.widget.EditText;
 
 import java.lang.*;
 
-public class StaffMessageUser extends AppCompatActivity{
+public class MessageStaff extends AppCompatActivity{
 
     //variables
-    private EditText Recipient;
     private EditText MessageSubject;
     private EditText MessageSend;
     private Button SendButton;
@@ -21,10 +20,9 @@ public class StaffMessageUser extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_staffmessage_user);
+        setContentView(R.layout.activity_message_staff);
 
         //declare variables
-        Recipient = (EditText) findViewById(R.id.Recipient);
         MessageSubject = (EditText) findViewById(R.id.MessageSubject);
         MessageSend = (EditText) findViewById(R.id.MessageSend);
         SendButton = (Button) findViewById(R.id.SendButton);

@@ -2,24 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/staffMessageUser"
+    android:id="@+id/MessageStaff"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StaffMessageUser">
+    tools:context=".MessageStaff">
 
-    <EditText
-        android:id="@+id/Recipient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/StaffText"
+        android:layout_width="285dp"
+        android:layout_height="48dp"
         android:ems="10"
-        android:hint="Recipient"
+        android:hint="Message will be sent to a staff member"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.298" />
+        app:layout_constraintVertical_bias="0.26" />
 
     <EditText
         android:id="@+id/MessageSubject"
@@ -32,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Recipient"
+        app:layout_constraintTop_toBottomOf="@+id/StaffText"
         app:layout_constraintVertical_bias="0.055" />
 
     <EditText
@@ -40,7 +39,7 @@
         android:layout_width="258dp"
         android:layout_height="210dp"
         android:ems="10"
-        android:hint="Message to User"
+        android:hint="Message to Staff"
         android:inputType="textLongMessage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
