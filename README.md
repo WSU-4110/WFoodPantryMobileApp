@@ -4,10 +4,10 @@ A proof of concept mobile app to access the W Food Pantry's <br />
 services via a native app for Android phones.
 
 This app is developed by:
-* Samuel Pfeiffer
-* Joe Bucciero
-* Chris Borys
-* Andrew DeFran
+* Samuel Pfeiffer -Full stack developer
+* Joe Bucciero -full stack developer
+* Chris Borys -full stack developer
+* Andrew DeFran -full stack developer/team lead
 
 # Technical Requirements
 * Android Studio version 4.1.3 or newer
