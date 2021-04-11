@@ -71,6 +71,10 @@ public class StaffMenuPage extends AppCompatActivity implements NavigationView.O
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_staff,
                         new StaffPushUpdate()).commit();
                 break;
+            case R.id.nav_update_menu:
+                Intent j = new Intent(this, StaffUpdateFoodMenu.class);
+                this.startActivity(j);
+                break;
             case R.id.nav_view_applications: // if "view applications" is clicked
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_staff,
                         new StaffViewApplications()).commit();
