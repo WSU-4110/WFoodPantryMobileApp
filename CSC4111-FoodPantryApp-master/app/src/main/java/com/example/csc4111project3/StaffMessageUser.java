@@ -36,4 +36,10 @@ public class StaffMessageUser extends AppCompatActivity{
             }
         });
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
 }
