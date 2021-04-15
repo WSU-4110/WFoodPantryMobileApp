@@ -50,7 +50,7 @@ public class StaffLoginPage extends AppCompatActivity {
         });
     }
     //private method to handle staff login once login button is clicked
-    private void staffLogin() {
+    protected void staffLogin() {
         //convert user input to Strings
         String staffEmail = accessID.getText().toString().trim();
         String pWord = password.getText().toString().trim();
