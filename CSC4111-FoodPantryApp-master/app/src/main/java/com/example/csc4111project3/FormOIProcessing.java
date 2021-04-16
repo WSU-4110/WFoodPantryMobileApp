@@ -1,7 +1,7 @@
 package com.example.csc4111project3;
 
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -13,7 +13,38 @@ import android.widget.Spinner;
 
 import java.lang.*;
 
+interface MenuSpinners{
+    public String[] createMenu();
+}
+
+class Carbs{
+    private static String[] carbohydrates;
+    public static String[] createMenu(){
+        //would need code to link specifically to menu availability for said items
+        carbohydrates = new String[]{"Bread", "Black Beans", "Rice"};
+        return carbohydrates;
+    }
+}
+
+class Vegetables{
+    private static String[] vegetables;
+    public static String[] createMenu(){
+        //would need code to link specifically to menu availability for said items
+        vegetables = new String[]{"Green Beans", "Carrots", "Corn"};
+        return vegetables;
+    }
+}
+
+class Fruits{
+    private static String[] fruits;
+    public static String[] createMenu(){
+        //would need code to link specifically to menu availability for said items
+        fruits = new String[]{"Pineapple", "Apple", "Orange"};
+        return fruits ;
+    }
+}
 public class FormOIProcessing extends AppCompatActivity implements AdapterView.OnItemSelectedListener{ //This is the class that will be handling the food selection portion of the user submission form
+
 
     //---------
     //VARIABLES
@@ -24,10 +55,15 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
     private Spinner spinner3;
     private Button submit;
     private Button cancel;
-    private static final String[] carbohydrates = {"Bread", "Black Beans", "Rice"};
-    private static final String[] vegetables = {"Green Beans", "Carrots", "Corn"};
-    private static final String[] fruits = {"Pineapple", "Apple", "Orange"};
+    private static String[] carbohydrates = Carbs.createMenu();
+    private static String[] vegetables = Vegetables.createMenu();
+    private static String[] fruits = Fruits.createMenu();
 
+    public static void createMenu(){
+        carbohydrates = Carbs.createMenu();
+        vegetables = Vegetables.createMenu();
+        fruits = Fruits.createMenu();
+    }
     //-------------------------------------------------------------
     //onCreate Override to establish the code upon entering the page
     //-------------------------------------------------------------
@@ -35,6 +71,7 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); //captures the instance of the application
         setContentView(R.layout.activity_order_form); //sets the content view to the order form
+        createMenu();
         submit = (Button) findViewById(R.id.submitButton);
         cancel = (Button) findViewById(R.id.cancelButton);
 
@@ -121,7 +158,6 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
             case 2:
                 // This is where the fruit choice will be placed
                 break;
-
         }
     }
 
