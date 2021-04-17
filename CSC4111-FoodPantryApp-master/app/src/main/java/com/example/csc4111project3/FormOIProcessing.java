@@ -47,14 +47,14 @@ interface MenuSpinners{
 
 class Carbs{
     private static String[] carbohydrates;
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String current_uid = user.getUid();
-    Query query = FirebaseDatabase.getInstance().getReference("Menu").orderByChild("foodType").equalTo("Protein");
+    //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    //String current_uid = user.getUid();
+    //Query query = FirebaseDatabase.getInstance().getReference("Menu").orderByChild("foodType").equalTo("Protein");
 
 
-
-    carbohydrates = new String[]{"Bread", "Black Beans", "Rice"};
-    return carbohydrates;
+    public static String[] createMenu(){
+        carbohydrates = new String[]{"Bread", "Black Beans", "Rice"};
+        return carbohydrates;
     }
 }
 
