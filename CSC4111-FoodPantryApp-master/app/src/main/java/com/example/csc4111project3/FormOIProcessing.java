@@ -11,7 +11,35 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.concurrent.TimeUnit;
+
 import java.lang.*;
+import java.util.concurrent.TimeUnit;
 
 interface MenuSpinners{
     public String[] createMenu();
@@ -19,8 +47,12 @@ interface MenuSpinners{
 
 class Carbs{
     private static String[] carbohydrates;
+    //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    //String current_uid = user.getUid();
+    //Query query = FirebaseDatabase.getInstance().getReference("Menu").orderByChild("foodType").equalTo("Protein");
+
+
     public static String[] createMenu(){
-        //would need code to link specifically to menu availability for said items
         carbohydrates = new String[]{"Bread", "Black Beans", "Rice"};
         return carbohydrates;
     }
@@ -44,7 +76,6 @@ class Fruits{
     }
 }
 public class FormOIProcessing extends AppCompatActivity implements AdapterView.OnItemSelectedListener{ //This is the class that will be handling the food selection portion of the user submission form
-
 
     //---------
     //VARIABLES

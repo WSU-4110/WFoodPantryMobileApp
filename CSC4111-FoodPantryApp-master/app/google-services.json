@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "567271525673",
+    "project_id": "wfoodpantrymobileapp",
+    "storage_bucket": "wfoodpantrymobileapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567271525673:android:fc0ee266ac385082effb38",
+        "android_client_info": {
+          "package_name": "com.example.csc4111project3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567271525673-nkmkqn25pf8tmem0hdt53oha9tas3oli.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQfgbCiEYebDBSIX2uNqhEy_8xY0tWL_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567271525673-nkmkqn25pf8tmem0hdt53oha9tas3oli.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

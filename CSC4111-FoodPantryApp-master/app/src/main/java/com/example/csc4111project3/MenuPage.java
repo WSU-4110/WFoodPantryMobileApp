@@ -81,12 +81,20 @@ public class MenuPage extends AppCompatActivity implements NavigationView.OnNavi
                         new AboutPage()).commit();
                 break;
             case R.id.nav_contact: // if "contact" is clicked
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ContactPage()).commit();
+                Intent con = new Intent(this, ContactPage.class);
+                this.startActivity(con);
                 break;
             case R.id.nav_order: // if "order" is clicked
                 Intent i = new Intent(this,FormOIProcessing.class); //creates a new intent to send the user to the order form page "activity_info_form.xml"
                 this.startActivity(i); //starts the activity using the intent
+                break;
+            case R.id.nav_message_staff: // if "message staff" is clicked
+                Intent j = new Intent(this, MessageStaff.class);
+                this.startActivity(j); //starts the activity using the intent
+                break;
+            case R.id.nav_browse_food_menu:
+                Intent k = new Intent(this, FoodMenu.class);
+                this.startActivity(k);
                 break;
             case R.id.nav_log_off:
                 finish();

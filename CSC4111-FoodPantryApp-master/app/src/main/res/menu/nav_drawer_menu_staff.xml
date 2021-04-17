@@ -16,6 +16,10 @@
             android:icon="@drawable/ic_push_update"
             android:title="Push Update" />
         <item
+            android:id="@+id/nav_update_menu"
+            android:icon="@drawable/ic_update_menu"
+            android:title="Update Pantry Menu"/>
+        <item
             android:id="@+id/nav_view_applications"
             android:icon="@drawable/ic_contact"
             android:title="View Applications" />
