@@ -11,70 +11,28 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 import java.lang.*;
-import java.util.concurrent.TimeUnit;
 
-interface MenuSpinners{
-    public String[] createMenu();
-}
-
-class Carbs{
-    private static String[] carbohydrates;
-    //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    //String current_uid = user.getUid();
-    //Query query = FirebaseDatabase.getInstance().getReference("Menu").orderByChild("foodType").equalTo("Protein");
-
-
-    public static String[] createMenu(){
-        carbohydrates = new String[]{"Bread", "Black Beans", "Rice"};
-        return carbohydrates;
-    }
-}
-
-class Vegetables{
-    private static String[] vegetables;
-    public static String[] createMenu(){
-        //would need code to link specifically to menu availability for said items
-        vegetables = new String[]{"Green Beans", "Carrots", "Corn"};
-        return vegetables;
-    }
-}
-
-class Fruits{
-    private static String[] fruits;
-    public static String[] createMenu(){
-        //would need code to link specifically to menu availability for said items
-        fruits = new String[]{"Pineapple", "Apple", "Orange"};
-        return fruits ;
-    }
-}
 public class FormOIProcessing extends AppCompatActivity implements AdapterView.OnItemSelectedListener{ //This is the class that will be handling the food selection portion of the user submission form
 
     //---------
@@ -86,15 +44,19 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
     private Spinner spinner3;
     private Button submit;
     private Button cancel;
-    private static String[] carbohydrates = Carbs.createMenu();
-    private static String[] vegetables = Vegetables.createMenu();
-    private static String[] fruits = Fruits.createMenu();
+    private static ArrayList<String> protein = new ArrayList<String>();
+    private static ArrayList<String> vegetables = new ArrayList<String>();
+    private static ArrayList<String> fruits = new ArrayList<String>();
+    public static String orderUFirst;
+    public static String orderULast;
+    public static String orderUEmail;
+    public static String orderProtein;
+    public static String orderVeggie;
+    public static String orderFruit;
+    public static String orderDate;
+    private static String orderInProgress = "In progress";
 
-    public static void createMenu(){
-        carbohydrates = Carbs.createMenu();
-        vegetables = Vegetables.createMenu();
-        fruits = Fruits.createMenu();
-    }
+
     //-------------------------------------------------------------
     //onCreate Override to establish the code upon entering the page
     //-------------------------------------------------------------
@@ -102,17 +64,15 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); //captures the instance of the application
         setContentView(R.layout.activity_order_form); //sets the content view to the order form
-        createMenu();
         submit = (Button) findViewById(R.id.submitButton);
         cancel = (Button) findViewById(R.id.cancelButton);
-
-        spinner1 = (Spinner) findViewById(R.id.spinner1); //ties spinner to carbohydrate spinner within activity_order_form.xml
+        spinner1 = (Spinner) findViewById(R.id.spinner1); //ties spinner to protein spinner within activity_order_form.xml
         spinner2 = (Spinner) findViewById(R.id.spinner2); //ties spinner to vegetable spinner within activity_order_form.xml
         spinner3 = (Spinner) findViewById(R.id.spinner3); //ties spinner to fruit spinner within activity_order_form.xml
 
         //The below code creates ArrayAdaptors to the respective spinners, linking the contents of the ingredient arrays to the dropdown list items
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(FormOIProcessing.this,
-                android.R.layout.simple_spinner_dropdown_item, carbohydrates);
+                android.R.layout.simple_spinner_dropdown_item, protein);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(FormOIProcessing.this,
                 android.R.layout.simple_spinner_dropdown_item, vegetables);
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(FormOIProcessing.this,
@@ -123,25 +83,195 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        //Sets the carbohydrate array adaptor and a listener to the spinner objects for later use
+
+
+        //-----------------------------------------------------------------------------------------------------------------------------------
+        // Protein Spinner Setup: Includes the following:
+        // - adapter setting
+        // - dynamic database accessors to retrieve the food items from Firebase for dynamic menu
+        // - item listener to store selected food for order
+        //-----------------------------------------------------------------------------------------------------------------------------------
         spinner1.setAdapter(adapter1);
         spinner1.setOnItemSelectedListener(this);
 
-        //Sets the vegetable array adaptor and a listener to the spinner objects for later use
+        Query databasePro = FirebaseDatabase.getInstance().getReference("Menu").orderByChild("foodType").equalTo("Protein");
+        databasePro.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
+                protein.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Food food = snapshot.getValue(Food.class);
+                    String foodName = food.getFood();
+                    protein.add(foodName);
+                }
+                adapter1.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                orderProtein = spinner1.getSelectedItem().toString();
+                String tester = "The item selected is: " + orderProtein;
+                Toast.makeText(FormOIProcessing.this, tester, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                orderProtein = "None";
+
+            }
+        });
+        //-----------------------------------------------------------------------------------------------------------------------------------
+        // END OF PROTEIN SPINNER SETUP
+        //-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+        //-----------------------------------------------------------------------------------------------------------------------------------
+        // Vegetable Spinner Setup: Includes the following:
+        // - adapter setting
+        // - dynamic database accessors to retrieve the food items from Firebase for dynamic menu
+        // - item listener to store selected food for order
+        //-----------------------------------------------------------------------------------------------------------------------------------
         spinner2.setAdapter(adapter2);
         spinner2.setOnItemSelectedListener(this);
 
-        //Sets the fruit array adaptor and a listener to the spinner objects for later use
+        Query databaseVeg = FirebaseDatabase.getInstance().getReference("Menu").orderByChild("foodType").equalTo("Vegetable");
+        databaseVeg.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
+                vegetables.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Food food = snapshot.getValue(Food.class);
+                    String foodName = food.getFood();
+                    vegetables.add(foodName);
+                }
+                adapter2.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                orderVeggie = spinner2.getSelectedItem().toString();
+                String tester = "The item selected is: " + orderVeggie;
+                Toast.makeText(FormOIProcessing.this, tester, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                orderVeggie = "None";
+            }
+        });
+        //-----------------------------------------------------------------------------------------------------------------------------------
+        // END OF VEGETABLE SPINNER SETUP
+        //-----------------------------------------------------------------------------------------------------------------------------------
+
+
+        //-----------------------------------------------------------------------------------------------------------------------------------
+        // Fruit Spinner Setup: Includes the following:
+        // - adapter setting
+        // - dynamic database accessors to retrieve the food items from Firebase for dynamic menu
+        // - item listener to store selected food for order
+        //-----------------------------------------------------------------------------------------------------------------------------------
         spinner3.setAdapter(adapter3);
         spinner3.setOnItemSelectedListener(this);
+
+        Query databaseFru = FirebaseDatabase.getInstance().getReference("Menu").orderByChild("foodType").equalTo("Fruit");
+        databaseFru.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
+                fruits.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Food food = snapshot.getValue(Food.class);
+                    String foodName = food.getFood();
+                    fruits.add(foodName);
+                }
+                adapter3.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                orderFruit = spinner3.getSelectedItem().toString();
+                String tester = "The item selected is: " + orderFruit;
+                Toast.makeText(FormOIProcessing.this, tester, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                orderFruit = "None";
+
+            }
+        });
+        //-----------------------------------------------------------------------------------------------------------------------------------
+        // END OF FRUIT SPINNER SETUP
+        //-----------------------------------------------------------------------------------------------------------------------------------
+
+
 
         //Sets a listener override for the submit button, telling the button press where to go
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); //TO BE FILLED WITH CODE NECESSARY FOR SUBMITTING THE FORM INFO: This is merely a placeholder for demonstration
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    String email = user.getEmail();
+                    orderUEmail = email;
+                }
+
+                Query databaseUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("email").equalTo(orderUEmail);
+                databaseUser.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                            User user = snapshot.getValue(User.class);
+                            orderUFirst = user.getFirstName();
+                            orderULast = user.getLastName();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+                orderDate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+
+                Orders item = new Orders(orderUEmail, orderProtein, orderVeggie, orderFruit, orderDate, orderInProgress);
+                FirebaseDatabase.getInstance().getReference("Orders").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(item).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(FormOIProcessing.this, "The order was completed successfully!", Toast.LENGTH_SHORT).show();
+
+                            try {
+                                TimeUnit.SECONDS.sleep(2);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                        } else {
+                            Toast.makeText(FormOIProcessing.this, "The order has failed. Please contact W Pantry at 1-XXX-XXX-XXXX for assistance ", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                finish();
             }
         });
+
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,23 +303,9 @@ public class FormOIProcessing extends AppCompatActivity implements AdapterView.O
         });
     }
 
-    //-----------------------------------------------------------------------------------------------------------------------------------
-    //onItemSelected Override to establish what the items selected will do (requires SQL/JSON code down the road to store and send items)
-    //-----------------------------------------------------------------------------------------------------------------------------------
     @Override
-    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-        //A switch reader that will cycle through each array item (WORK IN PROGRESS, WILL NEED TO BE MODIFIED TO ACCOUNT FOR DIFFERENT AMOUNTS OF EACH FOOD ITEM TYPE)
-        switch (position) {
-            case 0:
-                // This is where the code for the carbohydrate choice will be placed
-                break;
-            case 1:
-                // This is where the vegetable choice will be placed
-                break;
-            case 2:
-                // This is where the fruit choice will be placed
-                break;
-        }
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
     }
 
     //-------------------------------------------------------------------------------------
