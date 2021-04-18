@@ -13,24 +13,23 @@ import java.lang.*;
 public class MessageStaff extends AppCompatActivity{
 
     //variables
-    private EditText MessageSubject;
-    private EditText MessageSend;
-    private Button SendButton;
+    private Button RefreshButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_staff);
 
-        //declare variables
-        MessageSubject = (EditText) findViewById(R.id.MessageSubject);
-        MessageSend = (EditText) findViewById(R.id.MessageSend);
-        SendButton = (Button) findViewById(R.id.SendButton);
+        //use name and accessID to check for messages
 
-        SendButton.setOnClickListener(new View.OnClickListener() {
+
+        //declare variables
+        RefreshButton = (Button) findViewById(R.id.RefreshButton);
+
+        RefreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); //fill later
+                //repeat process after create
             }
         });
     }
