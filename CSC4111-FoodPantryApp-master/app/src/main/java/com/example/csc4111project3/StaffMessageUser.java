@@ -43,8 +43,8 @@ public class StaffMessageUser extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                //conversion to String
-                String recipient =  Recipient.getText().toString().trim();
+                //conversion to String, makes recipient all lowercase as well
+                String recipient =  Recipient.getText().toString().trim().toLowerCase();
                 String subject =  MessageSubject.getText().toString().trim();
                 String messageContent =  MessageSend.getText().toString().trim();
 
@@ -54,16 +54,24 @@ public class StaffMessageUser extends AppCompatActivity{
                     Recipient.requestFocus();
                     return;
                 }
-                if(!Patterns.EMAIL_ADDRESS.matcher(recipient).matches()) {
-                    Recipient.setError("Provide valid user email");
-                    Recipient.requestFocus();
-                    return;
+
+                //checks for recipient as "all", if not then makes sure it is in email form
+                if(!recipient.matches("all")) {
+                    if (!Patterns.EMAIL_ADDRESS.matcher(recipient).matches()) {
+                        Recipient.setError("Provide valid user email");
+                        Recipient.requestFocus();
+                        return;
+                    }
                 }
+
+                //data validation. check for empty values
                 if(subject.isEmpty()){
                     MessageSubject.setError("Subject is required");
                     MessageSubject.requestFocus();
                     return;
                 }
+
+                //data validation. check for empty values
                 if(messageContent.isEmpty()){
                     MessageSend.setError("A message is required");
                     MessageSend.requestFocus();
