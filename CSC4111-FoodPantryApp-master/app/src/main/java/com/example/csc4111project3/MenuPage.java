@@ -92,10 +92,6 @@ public class MenuPage extends AppCompatActivity implements NavigationView.OnNavi
                 Intent j = new Intent(this, MessageStaff.class);
                 this.startActivity(j); //starts the activity using the intent
                 break;
-            case R.id.nav_browse_food_menu:
-                Intent k = new Intent(this, FoodMenu.class);
-                this.startActivity(k);
-                break;
             case R.id.nav_log_off:
                 finish();
                 break;
