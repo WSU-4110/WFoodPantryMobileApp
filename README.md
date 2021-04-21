@@ -20,7 +20,7 @@ to run the application, clone the repository locally <br />
 https://github.com/WSU-4110/WFoodPantryMobileApp
 
 Once installed in a local repository, open android studio <br />
-and open the project file.
+and open the project file CSC4111-FoodPantryApp-master.
 
 
 To set up the emulator within Android Studio. Select the AVD manager <br />
