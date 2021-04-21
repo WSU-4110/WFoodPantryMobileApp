@@ -1,6 +1,12 @@
 language: android
 language: java
+install: skip
 dist: trusty
+jdk: oraclejdk8
+
+script:
+  - ./gradlew build --scan -s
+
 android:
   components:
     # Uncomment the lines below if you want to
