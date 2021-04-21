@@ -1,4 +1,5 @@
 language: android
+language: java
 dist: trusty
 android:
   components:
