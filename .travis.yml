@@ -32,7 +32,7 @@ android:
     
 
 before_install:
-    - chmod +x gradlew
+    - chmod +x ./CSC4111-FoodPantryApp-master/gradlew
     - yes | sdkmanager "platforms;android-30"
     - yes | sdkmanager "build-tools;30.0.3"
     
